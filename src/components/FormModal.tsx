@@ -67,7 +67,9 @@ const FormModal = ({
         </button>
       </form>
     ) : type === "create" || type === "update" ? (
-      forms[table](type, data)
+      forms[table] ? forms[table](type, data) : <p>Form not available for "{table}"</p>
+    // ✅ TEMPERORY FIX: (Suhail bro i changed the above statement to prevent crash when form for table is not defined (missing in `forms` map)
+
     ) : (
       "Form not found!"
     );
